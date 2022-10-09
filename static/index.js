@@ -1,6 +1,7 @@
 const passwordEls = document.querySelectorAll(".password");
 const popUp = document.getElementById("pop-up");
 const imgLabel = document.querySelector(".custom-upload");
+const sentenceList = document.querySelector(".sentence-list");
 
 /*------------------------------------*\
   #EVENT-HANDLERS
@@ -82,12 +83,54 @@ function loadSentences(img) {
 	// run python
 	fetch("http://127.0.0.1:5000/upload", requestOptions).then((response) => {
 		// load sentences
-		jsonData = response.body;
-		console.log(JSON.parse(jsonData));
-/* 		fetch("../get-file/json_file.json").then((response) => {
+		jsonData = response;
+		console.log(jsonData);
+		/* 		fetch("../get-file/json_file.json").then((response) => {
 			console.log(response.data);
 		});
- */	});
+ */
+	});
+}
+
+function listSentences(json) {
+	const title1 = document.createElement("li");
+	title1.textContent = "Google Cloud OCR: ";
+	const title2 = document.createElement("li");
+	title2.textContent = "Formatted Text: ";
+	sentenceList.append(title1, title2);
+
+	return json.map((item) => {
+		const orig_text = document.createElement("li");
+		const new_text = document.createElement("li");
+
+		orig_text.textContent = Object.values(item)[0];
+		new_text.textContent = Object.values(item)[0];
+
+		sentenceList.append(orig_text, new_text);
+	});
+}
+
+function generateConversions(data) {
+	return data.map((item) => {
+		const container = document.createElement("div");
+		const title = document.createElement("h2");
+		const text = document.createElement("p");
+
+		title.textContent = item.title;
+		text.textContent = generateText(item.unit1, item.unit2);
+
+		sentenceList.append(title, text);
+		return container;
+	});
+}
+
+function render() {
+	// Display/update the base value
+	input.value = baseValue.toLocaleString("en-US");
+
+	// Display/update the conversions
+	conversions.textContent = "";
+	conversions.append(...generateConversions(conversion.data));
 }
 
 // Initialize

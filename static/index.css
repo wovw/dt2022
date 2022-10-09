@@ -130,7 +130,7 @@ body {
 main {
 	width: 100%;
 	max-width: 600px;
-	padding: 52px 52px 300px 52px;
+	padding: 52px 52px 52px 52px;
 	background: var(--blue);
 	border-radius: 15px;
 }
@@ -147,7 +147,11 @@ main {
 
 .subtitle {
 	display: flex;
-	margin-top: 16px;
+	margin-top: 10px;
+	font-size: 28px;
+
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: var(--black);
 }
 
 .passwords {
@@ -198,7 +202,7 @@ input[type="file"] {
 	align-items: center;
 	background: var(--red);
 	cursor: pointer;
-	padding: 10px 10px;
+	padding: 10px 10px 10px 10px;
 	border-radius: 6px;
 	gap: 25px;
 	max-width: 50%;
