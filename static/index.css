@@ -17,7 +17,7 @@
 }
 
 html {
-	font-family: "Comic Neue";
+	font-family: "Bangers";
 }
 
 body,
@@ -57,21 +57,35 @@ input[type="number"] {
 \*------------------------------------*/
 
 .title {
-	font-family: "Comic Neue";
-	font-size: 40px;
-	font-weight: 00;
-	letter-spacing: -1px;
+	font-family: "Bangers";
+	font-size: 65px;
+	font-weight: 500;
+	letter-spacing: 1px;
 	line-height: 1;
+
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: var(--black);
 }
 
-.accent-text {
+.accent-title {
 	color: var(--yellow);
-	display: block;
+	font-family: "Bangers";
+	font-size: 125px;
 	font-weight: 500;
+	letter-spacing: 8px;
+	line-height: 0.75;
+
+	-webkit-text-stroke-width: 6px;
+	-webkit-text-stroke-color: var(--black);
 }
 
 .subtitle {
-	font-size: 1.25rem;
+	font-size: 20px;
+}
+
+.accent-subtitle {
+	font-size: 20px;
+	color: var(--red);
 }
 
 label {
@@ -79,6 +93,7 @@ label {
 	font-size: 12px;
 	margin-bottom: 4px;
 	margin-left: 2px;
+	display: flex;
 }
 
 /*------------------------------------*\
@@ -115,12 +130,23 @@ body {
 main {
 	width: 100%;
 	max-width: 600px;
-	padding: 118px 52px 46px 52px;
+	padding: 52px 52px 300px 52px;
 	background: var(--blue);
 	border-radius: 15px;
 }
 
+.center {
+	margin: auto;
+	width: 60%;
+	padding: 0px;
+}
+
+.flex {
+	display: inline-block;
+}
+
 .subtitle {
+	display: flex;
 	margin-top: 16px;
 }
 

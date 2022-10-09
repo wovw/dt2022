@@ -38,3 +38,4 @@ def loadImgFunction():
 
 	myobj = gTTS(text=(" ".join(autocorrected_text)), lang='en', slow=False)
 	myobj.save(path + "output.mp3")
+	return json_output

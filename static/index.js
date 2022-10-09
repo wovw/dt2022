@@ -78,14 +78,16 @@ function loadSentences(img) {
 		files: img,
 		body: formData,
 	};
-	fetch("http://127.0.0.1:5000/upload", requestOptions).then(() => {
-		console.log("1");
-	});
 
 	// run python
-
-	// load sentences
-	const sentencesFile = 1;
+	fetch("http://127.0.0.1:5000/upload", requestOptions).then((response) => {
+		// load sentences
+		jsonData = response.body;
+		console.log(JSON.parse(jsonData));
+/* 		fetch("../get-file/json_file.json").then((response) => {
+			console.log(response.data);
+		});
+ */	});
 }
 
 // Initialize
