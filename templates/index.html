@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Comic Convert</title>
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Karla:wght@800&display=swap"
+			rel="stylesheet" />
+
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{ url_for('static', filename='index.css')}}" />
+		<script
+			defer
+			src="{{ url_for('static', filename='index.js')}}"></script>
+	</head>
+	<body>
+		<main>
+			<!--change this later maybe-->
+			<h1 class="title">
+				<span class="accent-text">Comic</span> Convert
+			</h1>
+
+			<p class="subtitle">Turn any comic into dialogue</p>
+
+			<div class="controls">
+				<button id="generate">
+					<svg
+						width="14"
+						height="18"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg">
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M8.3.046A1 1 0 0 1 9 1v5h4a1 1 0 0 1 .82 1.573l-7 10A1 1 0 0 1 5 17v-5H1a1 1 0 0 1-.82-1.573l7-10A1 1 0 0 1 8.3.047Z"
+							fill="#fff" />
+					</svg>
+					<span>Upload Image</span>
+				</button>
+			</div>
+
+			<input
+				type="file"
+				id="image-input"
+				accept="image/jpeg, image/png, image/jpg" />
+			<div id="display-image"></div>
+
+			<div class="passwords">
+				<ul class="password-list">
+					<!-- 					<li><button class="password hidden"></button></li>
+					<li><button class="password hidden"></button></li>
+					<li><button class="password hidden"></button></li>
+					<li><button class="password hidden"></button></li>
+ -->
+				</ul>
+			</div>
+		</main>
+
+		<div id="pop-up" class="pop-up">Password copied to clipboard</div>
+	</body>
+</html>

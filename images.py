@@ -92,7 +92,7 @@ def detect_text(path):
 #------------------------------------------------------------------------------------------------
 
 #filename = "C:/Users/upads/Documents/escuela_drive/Misc/Datathon 2022/training-strips/cartoon4.png"
-filename = "given_dataset/cartoon15.png"
+filename = "/images/image.png"
 #filename = "new_dataset/advanced_techniques.png"
 #img = cv2.imread('training-strips\\' + filename)
 #text = pytesseract.image_to_string(img)
