@@ -2,17 +2,12 @@
   #BASE
 \*------------------------------------*/
 
-
-
-@font-face { font-family: Delicious; src: url('Delicious-Roman.otf'); } 
-@font-face { font-family: Delicious; font-weight: bold; src: url('Delicious-Bold.otf');}
-
 :root {
 	--black: #0a1c20;
-    --blue: #41a6de;
-    --yellow: #fedb0e;
-    --pink: #f6343c;
-    --red: #d01e00;
+	--blue: #41a6de;
+	--yellow: #fedb0e;
+	--pink: #f6343c;
+	--red: #d01e00;
 }
 
 * {
@@ -22,7 +17,7 @@
 }
 
 html {
-	font-family: "Inter", sans-serif;
+	font-family: "Comic Neue";
 }
 
 body,
@@ -62,7 +57,7 @@ input[type="number"] {
 \*------------------------------------*/
 
 .title {
-	font-family: "Karla", sans-serif;
+	font-family: "Comic Neue";
 	font-size: 40px;
 	font-weight: 00;
 	letter-spacing: -1px;
@@ -89,28 +84,6 @@ label {
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
-
-button {
-	display: flex;
-	align-items: center;
-	gap: 16px;
-	background: var(--red);
-	cursor: pointer;
-}
-
-button:hover,
-button:active {
-	opacity: 0.8;
-}
-
-#generate {
-	padding: 2px 20px;
-	border-radius: 6px;
-}
-
-#generate:active {
-	transform: translateY(4px);
-}
 
 .pop-up {
 	position: fixed;
@@ -151,16 +124,6 @@ main {
 	margin-top: 16px;
 }
 
-.controls {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 16px 35px;
-	margin-top: 51px;
-	margin-bottom: 35px;
-	flex-direction: row-reverse;
-	justify-content: flex-end;
-}
-
 .passwords {
 	border-top: 1px solid #2f3e53;
 	padding-top: 35px;
@@ -178,9 +141,9 @@ main {
 }
 
 .password-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
-    gap: 24px 27px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+	gap: 24px 27px;
 }
 
 .password {
@@ -200,10 +163,36 @@ main {
 	display: none;
 }
 
-#display-image{
-  width: 400px;
-  height: 225px;
-  border: 1px solid black;
-  background-position: center;
-  background-size: cover;
+input[type="file"] {
+	display: none;
+}
+
+.custom-upload {
+	display: flex;
+	align-items: center;
+	background: var(--red);
+	cursor: pointer;
+	padding: 10px 10px;
+	border-radius: 6px;
+	gap: 25px;
+	max-width: 50%;
+	margin: 10px 10px;
+	font-size: 1.5em;
+}
+
+.custom-upload:hover,
+.custom-upload:active {
+	opacity: 0.8;
+}
+
+.custom-upload:active {
+	transform: translateY(4px);
+}
+
+#display-image {
+	border: 0px solid black;
+	background-size: contain;
+	width: 300px;
+	height: 300px;
+	background-repeat: no-repeat;
 }

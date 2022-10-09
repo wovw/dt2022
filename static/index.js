@@ -1,35 +1,10 @@
-const generateBtn = document.getElementById("generate");
 const passwordEls = document.querySelectorAll(".password");
 const popUp = document.getElementById("pop-up");
-const imgInput = document.getElementById("image-input");
+const imgLabel = document.querySelector(".custom-upload");
 
 /*------------------------------------*\
   #EVENT-HANDLERS
 \*------------------------------------*/
-
-function updateLength(event) {
-	const number = Math.floor(event.target.value);
-
-	if (number >= 8 && number <= 20) {
-		passwordLength = number;
-	} else {
-		alert("Password length must be between 8 and 20 characters.");
-	}
-
-	event.target.value = passwordLength;
-}
-
-function inputStepper(event) {
-	if (event.target.id === "decrement") {
-		lengthInput.stepDown();
-	}
-
-	if (event.target.id === "increment") {
-		lengthInput.stepUp();
-	}
-
-	passwordLength = lengthInput.value;
-}
 
 async function copyToClipboard(event) {
 	const password = event.target.textContent;
@@ -60,10 +35,6 @@ function copyUsingExecCommand(text) {
 	input.remove();
 }
 
-/*------------------------------------*\
-  #GENERATOR-FUNCTIONS
-\*------------------------------------*/
-
 function generatePasswords() {
 	// generate a list of passwords based on the number of password elements
 	let passwords = [];
@@ -79,24 +50,50 @@ function generatePasswords() {
 	}
 }
 
+function loadImg() {
+	const selectedFile = document.getElementById("img-upload").files[0];
+	console.log("1");
+	const reader = new FileReader();
+	reader.addEventListener("load", () => {
+		const uploaded_image = reader.result;
+		const displayImg = document.querySelector("#display-image");
+		displayImg.classList.remove("hidden");
+		displayImg.style.backgroundImage = `url(${uploaded_image})`;
+	});
+	reader.readAsDataURL(selectedFile);
+
+	loadSentences(selectedFile);
+}
+
+function loadSentences(img) {
+	// upload image
+	let formData = new FormData();
+	formData.append("file", img);
+	const requestOptions = {
+		headers: {
+			"Content-Type": img.contentType,
+		},
+		mode: "no-cors",
+		method: "POST",
+		files: img,
+		body: formData,
+	};
+	fetch("http://127.0.0.1:5000/upload", requestOptions).then((response) => {
+		console.log(response.data);
+	});
+
+	// run python
+
+	// load sentences
+	const sentencesFile = 1;
+}
+
 // Initialize
 let timeoutId;
-let passwordLength = 15;
-lengthInput.value = passwordLength;
 
-generateBtn.addEventListener("click", generatePasswords);
-
+// event listeners
 passwordEls.forEach((element) => {
 	element.addEventListener("click", copyToClipboard);
 });
 
-imgInput.addEventListener("change", function () {
-	const reader = new FileReader();
-	reader.addEventListener("load", () => {
-		const uploaded_image = reader.result;
-		document.querySelector(
-			"#display-image"
-		).style.backgroundImage = `url(${uploaded_image})`;
-	});
-	reader.readAsDataURL(this.files[0]);
-});
+imgLabel.addEventListener("change", loadImg);

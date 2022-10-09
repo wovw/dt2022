@@ -9,7 +9,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Karla:wght@800&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
 			rel="stylesheet" />
 
 		<link
@@ -29,8 +29,12 @@
 
 			<p class="subtitle">Turn any comic into dialogue</p>
 
-			<div class="controls">
-				<button id="generate">
+			<div id="img">
+				<label class="custom-upload">
+					<input
+						type="file"
+						id="img-upload"
+						accept="image/jpeg, image/png, image/jpg" />
 					<svg
 						width="14"
 						height="18"
@@ -43,14 +47,9 @@
 							fill="#fff" />
 					</svg>
 					<span>Upload Image</span>
-				</button>
+				</label>
+				<div id="display-image" class="hidden"></div>
 			</div>
-
-			<input
-				type="file"
-				id="image-input"
-				accept="image/jpeg, image/png, image/jpg" />
-			<div id="display-image"></div>
 
 			<div class="passwords">
 				<ul class="password-list">
