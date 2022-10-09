@@ -19,7 +19,12 @@ def __is_mostly_lowercase(word):
         if char.islower() or (not char.islower() and not char.isupper()):
            lower_count += 1
     return lower_count >= len(word) / 2
-
+def __is_mostly_numbers(word):
+    num_count = 0
+    for char in word:
+        if char.isnumeric() :
+           num_count += 1
+    return num_count >= len(word) / 2
 # runs sentence fixer on multiple threads
 def __multithread_fix_sentence(arr, index):
     global tool
@@ -27,9 +32,9 @@ def __multithread_fix_sentence(arr, index):
     arr[index].strip()  
     text_list = arr[index].split()
     for i in range(len(text_list)):
-        if(any(char.isdigit() for char in text_list[i]) and (text_list[i].isupper() or text_list[i].islower())):
+        if(not __is_mostly_numbers(text_list[i]) and any(char.isdigit() for char in text_list[i]) and (text_list[i].isupper() or text_list[i].islower())):
             text_list[i] = "".join(i for i in text_list[i] if not i.isdigit())
-        if "..." not in text_list[i] and __is_mostly_lowercase(text_list[i]):
+        if "..." not in text_list[i] and __is_mostly_lowercase(text_list[i]) and not __is_mostly_numbers(text_list[i]):
             text_list[i] = ""
     arr[index] = ' '.join(text_list) 
     matches = tool.check(arr[index])
@@ -37,7 +42,7 @@ def __multithread_fix_sentence(arr, index):
         offset = matches[0].offset
         errorLength = matches[0].errorLength
         error_word = arr[index][offset:offset + errorLength]
-        if not __is_word(error_word):
+        if not __is_word(error_word) and not __is_mostly_numbers(error_word):
             if len(matches[0].replacements) != 0:
                 arr[index] = arr[index][0:offset] + (matches[0].replacements)[0] + arr[index][offset + errorLength:]
             break
@@ -67,3 +72,8 @@ def fix_sentence(text_list):
             text_list.remove(text_list[i])
     return text_list
 
+
+if __name__ == "__main__":
+    text_list = ["IT COMES AND GOES WITH THE SEASONS, BUT IT'S BEEN THERE SINCE AT LEAST THE 1980s."]
+    print(fix_sentence(text_list))
+   # print(__is_mostly_numbers("1980s"))
