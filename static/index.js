@@ -1,4 +1,4 @@
-const passwordEls = document.querySelectorAll(".password");
+const sentenceEls = document.querySelectorAll(".sentence");
 const popUp = document.getElementById("pop-up");
 const imgLabel = document.querySelector(".custom-upload");
 const sentenceList = document.querySelector(".sentence-list");
@@ -36,21 +36,6 @@ function copyUsingExecCommand(text) {
 	input.remove();
 }
 
-function generatePasswords() {
-	// generate a list of passwords based on the number of password elements
-	let passwords = [];
-	for (let i = 0; i < passwordEls.length; i++) {
-		const password = generatePassword();
-		passwords.push(password);
-	}
-
-	// display the passwords on the page
-	for (let i = 0; i < passwords.length; i++) {
-		passwordEls[i].textContent = passwords[i];
-		passwordEls[i].classList.remove("hidden");
-	}
-}
-
 function loadImg() {
 	const selectedFile = document.getElementById("img-upload").files[0];
 	console.log("1");
@@ -85,10 +70,7 @@ function loadSentences(img) {
 		// load sentences
 		jsonData = response;
 		console.log(jsonData);
-		/* 		fetch("../get-file/json_file.json").then((response) => {
-			console.log(response.data);
-		});
- */
+		listSentences(jsonData);
 	});
 }
 
@@ -106,38 +88,19 @@ function listSentences(json) {
 		orig_text.textContent = Object.values(item)[0];
 		new_text.textContent = Object.values(item)[0];
 
+		orig_text.classList.add("sentence");
+		new_text.classList.add("sentence");
+
 		sentenceList.append(orig_text, new_text);
+		return sentenceList;
 	});
-}
-
-function generateConversions(data) {
-	return data.map((item) => {
-		const container = document.createElement("div");
-		const title = document.createElement("h2");
-		const text = document.createElement("p");
-
-		title.textContent = item.title;
-		text.textContent = generateText(item.unit1, item.unit2);
-
-		sentenceList.append(title, text);
-		return container;
-	});
-}
-
-function render() {
-	// Display/update the base value
-	input.value = baseValue.toLocaleString("en-US");
-
-	// Display/update the conversions
-	conversions.textContent = "";
-	conversions.append(...generateConversions(conversion.data));
 }
 
 // Initialize
 let timeoutId;
 
 // event listeners
-passwordEls.forEach((element) => {
+sentenceEls.forEach((element) => {
 	element.addEventListener("click", copyToClipboard);
 });
 

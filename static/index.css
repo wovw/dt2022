@@ -154,29 +154,29 @@ main {
 	-webkit-text-stroke-color: var(--black);
 }
 
-.passwords {
+.sentences {
 	border-top: 1px solid #2f3e53;
 	padding-top: 35px;
 	margin-top: 35px;
 }
 
-.password-list > li,
-.password {
+.sentence-list > li,
+.sentence {
 	border-radius: 6px;
 	background: var(--black);
 }
 
-.password-list > li {
+.sentence-list > li {
 	height: 40px;
 }
 
-.password-list {
+.sentence-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
 	gap: 24px 27px;
 }
 
-.password {
+.sentence {
 	font-weight: 500;
 	width: 100%;
 	height: 100%;
@@ -185,7 +185,7 @@ main {
 	align-items: center;
 }
 
-.password:active {
+.sentence:active {
 	transform: translateY(2px);
 }
 
