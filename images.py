@@ -69,13 +69,15 @@ def detect_text(path):
     txtStrings = txtStrings.replace(' !', "!ඞ")
     txtStrings = txtStrings.replace(' . ', ".ඞ ")
     txtStrings = txtStrings.replace(' ... ', "...ඞ\n")
+    txtStrings = txtStrings.replace('... ', "ඞ\n...")
     txtStrings = txtStrings.replace(' .', ".ඞ")
-    
+
     txtStrings = txtStrings.split("ඞ")
     txtStrings = [s.strip() for s in txtStrings]
     
     for txt in txtStrings:
         print(txt)
+    print(txtStrings)
     
     if response.error.message:
         raise Exception(
@@ -89,8 +91,9 @@ def detect_text(path):
 
 #------------------------------------------------------------------------------------------------
 
-filename = "C:/Users/upads/Documents/escuela_drive/Misc/Datathon 2022/training-strips/cartoon4.png"
-filename = "new_dataset/an_apple_a_day.png"
+#filename = "C:/Users/upads/Documents/escuela_drive/Misc/Datathon 2022/training-strips/cartoon4.png"
+filename = "given_dataset/cartoon15.png"
+#filename = "new_dataset/advanced_techniques.png"
 #img = cv2.imread('training-strips\\' + filename)
 #text = pytesseract.image_to_string(img)
 detect_text(filename)
