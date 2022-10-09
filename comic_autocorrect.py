@@ -3,7 +3,6 @@ import language_tool_python
 from multiprocessing import shared_memory, Process
 import requests
 from matplotlib import test
-from numba import jit
 
 # check if words exists in dictionary.com
 def __is_word(word):

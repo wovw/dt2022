@@ -3,7 +3,6 @@ from google.cloud import vision
 import io
 from typing import Sequence
 from google.api_core.client_options import ClientOptions
-from google.cloud import documentai
 
 def detect_text(path):
     """Detects text in the file."""

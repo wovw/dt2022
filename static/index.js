@@ -78,8 +78,8 @@ function loadSentences(img) {
 		files: img,
 		body: formData,
 	};
-	fetch("http://127.0.0.1:5000/upload", requestOptions).then((response) => {
-		console.log(response.data);
+	fetch("http://127.0.0.1:5000/upload", requestOptions).then(() => {
+		console.log("1");
 	});
 
 	// run python
