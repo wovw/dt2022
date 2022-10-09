@@ -74,10 +74,8 @@ def detect_text(path):
 
     txtStrings = txtStrings.split("ඞ")
     txtStrings = [s.strip() for s in txtStrings]
-    
-    for txt in txtStrings:
-        print(txt)
-    print(txtStrings)
+
+    return txtStrings
     
     if response.error.message:
         raise Exception(
@@ -96,8 +94,8 @@ filename = "given_dataset/cartoon15.png"
 #filename = "new_dataset/advanced_techniques.png"
 #img = cv2.imread('training-strips\\' + filename)
 #text = pytesseract.image_to_string(img)
-detect_text(filename)
-#print(bob)
+print(detect_text(filename))
+
 
 
 
